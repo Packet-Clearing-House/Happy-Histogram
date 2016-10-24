@@ -38,6 +38,7 @@ So, I decided to roll my own!
    ```
 1. Define the HTML where you want to render your histogram (must be an ID): ``<div id="hisogram"></div>``
 1. Declare your data set as a multi-dimentsional array, with one sub-array for each year. 
+
    ```
    var Year = [
        [1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,1,2,4,2,1,1,0,7,9,7,3,2,1,1],
@@ -45,6 +46,7 @@ So, I decided to roll my own!
        [1,1,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
    ];
    ```
+   
    Careful!  Garbage in, garbage out - HH will not validate any values, only accepts
    ints (no floats!) and will not pad for missing or ``NULL`` days.
 1. Call HH specifying target, data and CSS color: ``HappyHistogram('histogram', Year);`` . Your target must be an ID, not a class. 
