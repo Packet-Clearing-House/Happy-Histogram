@@ -14,7 +14,9 @@ and desktop browsers.
 ## Example
 
 PCH's [Calendar of Internet Governance Meetings](https://pch.net/meetings). This was 
-the inception page for this library.
+the inception page for this library:
+
+[![](./example/hh.png)](https://pch.net/meetings)
 
 ## Why
 
@@ -31,10 +33,11 @@ So, I decided to roll my own!
 
 ### Basics
 
-1. Include HH's JavaScript and CSS: 
+1. [Download HH ](https://github.com/Packet-Clearing-House/Happy-Histogram/archive/1.0.zip) and grab the minified CSS and JS from the "dist" directory.
+2. Include HH's JavaScript and CSS: 
    ```
-   <script src="HappyHistogram.js" ></script>
-   <link rel="stylesheet" href="HappyHistogram.css" />
+   <script src="HappyHistogram.min.js" ></script>
+   <link rel="stylesheet" href="HappyHistogram.min.css" />
    ```
 1. Define the HTML where you want to render your histogram (must be an ID): ``<div id="hisogram"></div>``
 1. Declare your data set as a multi-dimentsional array, with one sub-array for each year. 
