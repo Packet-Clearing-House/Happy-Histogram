@@ -59,6 +59,8 @@ So, I decided to roll my own!
 **Bar Color** - Pass in the CSS value when you
 call HH: ``HappyHistogram('histogram', Year, 'red');`` or ``HappyHistogram('histogram', Year, '#ddd');``. Default color is ``#043864``
 
+**Histogram Height** -  _After_ you have included HH's CSS, declare an update CSS entry for the height ``.yearHistogram .month .chart { height: 25px; }``
+
 **Background Color** - _After_ you have included HH's CSS, declare an update CSS entry
 for the background ``.yearHistogram .emptyTop { background-color: yellow; }``
 
