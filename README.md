@@ -33,7 +33,7 @@ So, I decided to roll my own!
 
 ### Basics
 
-1. [Download HH ](https://github.com/Packet-Clearing-House/Happy-Histogram/archive/1.0.zip) and grab the minified CSS and JS from the "dist" directory.
+1. Download [the latest HH](https://github.com/Packet-Clearing-House/Happy-Histogram/releases/latest) and grab the minified CSS and JS from the "dist" directory.
 2. Include HH's JavaScript and CSS: 
    ```
    <script src="HappyHistogram.min.js" ></script>
