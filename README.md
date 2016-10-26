@@ -39,7 +39,7 @@ So, I decided to roll my own!
    <script src="HappyHistogram.min.js" ></script>
    <link rel="stylesheet" href="HappyHistogram.min.css" />
    ```
-1. Define the HTML where you want to render your histogram (must be an ID): ``<div id="hisogram"></div>``
+1. Define the HTML where you want to render your histogram (must be an ID): ``<div id="histogram"></div>``
 1. Declare your data set as a multi-dimentsional array, with one sub-array for each year. 
 
    ```
