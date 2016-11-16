@@ -1,6 +1,6 @@
 /**
  * Generate an entirely HTML based histogram for events across a year
- * Version 1.0
+ * Version 1.1
  * @param targetId - ID in DOM to render into
  * @param monthData array of arrays - with int per day
  * @param color string - CSS color
@@ -52,7 +52,8 @@ function HappyHistogram (targetId, monthData, color ) {
                 day = 0;
             }
             if (day > 0){
-                bottom = day / max * 100;
+                // round bottom to closest 2
+                bottom = Math.ceil((day / max * 100) / 2) * 2;
                 top = 100 - bottom ;
             } else {
                 bottom = 0;

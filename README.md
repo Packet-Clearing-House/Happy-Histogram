@@ -78,4 +78,5 @@ MIT
 
 ## Version History
 
+- 1.1 - 11/16/2016: Fix gap on Safari, add more examples
 - 1.0 - 10/24/2016: Initial release
