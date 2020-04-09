@@ -5,7 +5,7 @@
 Happy Histogram (HH) is a simple JavaScript library for generating a
 client side histogram showing activity across 
 a year.  This JavaScript
-library uses no 3rd party libraries (eg D3 or jQuery) and is barely over 900 _bytes_ in size. 
+library uses no 3rd party libraries (eg D3 or jQuery) and is barely over 1000 _bytes_ in size. 
 The DOM elements used are only
 HTML (floating DIVs) and not any fancy Canvas or SVG. The final histogram is very 
 fast to render and is 100% responsive, looking good on both mobile
@@ -13,8 +13,10 @@ and desktop browsers.
 
 ## Example
 
-PCH's [Calendar of Internet Governance Meetings](https://pch.net/meetings). This was 
-the inception page for this library:
+This repo includes an example page which [you can view](https://packet-clearing-house.github.io/Happy-Histogram/example/).
+
+As well, see PCH's [Calendar of Internet Governance Meetings](https://pch.net/meetings). This was 
+the inception page for this library and looks like this:
 
 [![](./example/hh.png)](https://pch.net/meetings)
 
@@ -40,19 +42,54 @@ So, I decided to roll my own!
    <link rel="stylesheet" href="HappyHistogram.min.css" />
    ```
 1. Define the HTML where you want to render your histogram (must be an ID): ``<div id="histogram"></div>``
-1. Declare your data set as a multi-dimentsional array, with one sub-array for each year. 
+1. Declare your data set as a multi-dimentsional array, with one sub-array for each month. 
 
    ```
    var Year = [
-       [1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,1,2,4,2,1,1,0,7,9,7,3,2,1,1],
-       ...
-       [1,1,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+       [1,0,0,0,0,0,0,0,0,0,0,1,0,1,0],
+       [2,0,0,0,0,0,0,0,0,0,0,1,0,1,0],
+       [1,0,0,0,0,0,0,0,0,0,0,1,0,1,0],
+       [1,0,0,0,0,0,0,0,0,0,0,1,0,1,0],
+       [3,0,0,0,0,0,2,0,0,0,0,1,0,1,0],
+       [1,0,0,0,0,0,0,0,0,0,0,1,0,1,0],
+       [1,0,0,0,0,0,0,0,0,0,0,1,0,1,0],
+       [4,0,0,0,1,0,0,0,0,0,0,1,0,1,0],
+       [1,0,0,0,0,0,0,0,0,0,0,1,0,1,0],
+       [1,0,0,0,0,0,0,0,0,0,0,1,0,1,0],
+       [3,0,0,0,0,2,0,0,0,0,0,1,0,1,0],
+       [1,0,0,0,0,1,0,0,0,0,0,0,0,1,0]
    ];
    ```
    
    Careful!  Garbage in, garbage out - HH will not validate any values, only accepts
-   ints (no floats!) and will not pad for missing or ``NULL`` days.
+   ints or floats and will not pad for missing or ``NULL`` days.
 1. Call HH specifying target, data and CSS color: ``HappyHistogram('histogram', Year);`` . Your target must be an ID, not a class. 
+
+### Per Value Class
+
+If you want to be able to have different colors for different values, you can uses classes.  
+Instead of passing in a value, you pass in an array.  The zeroth element is the value
+and the first element is the class name.  To get multiple class names, pass in the first element
+as a string with spaces between each class:
+
+```
+var Year = [
+   [[1,'foo'],[2,'bar'],[3,'bash']],
+   [[4,'bar'],[2,'bar'],[3,'bash']],
+   [[2,'bash'],[2,'bar'],[3,'bash']],
+   [[2,'bash'],[2,'bash'],[3,'bash']],
+   [[2,'foo'],[2,'foo'],[3,'foo']],
+   [[2,'bash'],[2,'foo'],[3,'foo']],
+   [[2,'foo'],[2,'bash'],[3,'foo']],
+   [[3,'bar'],[2,'foo'],[3,'bash']],
+   [[2,'foo'],[5,'bar extra-secret-class'],[3,'foo']],
+   [[2,'foo'],[2,'foo'],[3,'foo']],
+   [[4,'foo'],[3,'foo'],[3,'bar']],
+   [[2,'bar'],[2,'foo'],[3,'foo']],
+];
+```
+
+Note that HH does some limited validation to ensure that array elements are correctly populated.
 
 ### Advanced
 
@@ -79,6 +116,7 @@ MIT
 ## Version History
 
 
+- 1.2 - 04/09/2020: Enable values to be arrays so classes can passed for each value 
 - 1.1 - 11/16/2016: Fix gap on Safari, add more examples
 - 1.0 - 10/24/2016: Initial release
 
