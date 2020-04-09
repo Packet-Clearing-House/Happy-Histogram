@@ -1,6 +1,6 @@
 /**
  * Generate an entirely HTML based histogram for events across a year
- * Version 1.1
+ * Version 1.2
  * @param targetId - ID in DOM to render into
  * @param monthData array of arrays - with int per day
  * @param color string - CSS color
@@ -11,6 +11,7 @@ function HappyHistogram (targetId, monthData, color ) {
     var bottom = 0;
     var top = 100;
     var width;
+    var extraClass;
     var finalHTML = '';
     var max = 0;
     var i = 0;
@@ -28,7 +29,12 @@ function HappyHistogram (targetId, monthData, color ) {
     // figure max
     for (i = 0; i < monthData.length; i++) {
         for (i2 = 0; i2 < monthData[i].length; i2++) {
-            if (monthData[i][i2] > max) max = monthData[i][i2];
+            if (Array.isArray(monthData[i][i2])){
+                val = monthData[i][i2][0];
+            } else {
+                val = monthData[i][i2];
+            }
+            if (val > max) max = val;
         }
     }
 
@@ -46,8 +52,20 @@ function HappyHistogram (targetId, monthData, color ) {
         '<div class="chart">';
 
         for (i2 = 0; i2 < monthData[i].length; i2++) {
+            // init extra class to be empty at the start of each value
+            extraClass = '';
+
             // calculate day height percentages
-            day = monthData[i][i2];
+            if (Array.isArray(monthData[i][i2])){
+                if (monthData[i][i2][0] !== undefined) {
+                    day = monthData[i][i2][0];
+                    if(monthData[i][i2][1] !== undefined) {
+                        extraClass = monthData[i][i2][1];
+                    }
+                }
+            } else {
+                day = monthData[i][i2];
+            }
             if (day < 0){
                 day = 0;
             }
@@ -62,7 +80,7 @@ function HappyHistogram (targetId, monthData, color ) {
             finalHTML +=
                 '<div class="bar" style="width: ' + width + '%">' +
                     '<div class="emptyTop" style="height: ' + top + '%">&nbsp;</div>' +
-                    '<div class="filledBottom" style="height: ' + bottom + '%">&nbsp;</div>' +
+                    '<div class="filledBottom ' + extraClass + '" style="height: ' + bottom + '%">&nbsp;</div>' +
                 '</div>';
         }
 

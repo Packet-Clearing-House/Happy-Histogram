@@ -3,17 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="../dist/HappyHistogram.min.js" ></script>
+    <script src="../src/HappyHistogram.js" ></script>
     <link rel="stylesheet" href="../dist/HappyHistogram.min.css" />
 </head>
 <body>
 
-<h1>Happy Histogram 1.1</h1>
+<h1>Happy Histogram 1.2</h1>
 
 <h2> Commits made per day </h2>
 <div id="histogram2"></div>
 <script>
-    Year = [
+    var Year = [
         [10,2,2,4,3,3,0,2,3,3,3,3,2,0,1,2,2,1,2,1,0,0,2,2,2,3,3,1,2,2,2],
         [0,0,0,0,0,1,1,1,1,1,1,0,0,0,3,4,4,6,3,1,2,3,4,4,3,1,0,0,1],
         [0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,1,2,4,2,1,1,0,7,9,7,3,2,1,1],
@@ -89,9 +89,67 @@
 
 <p>1 value per month, hover effect on just data bar (bottom) and different color.</p>
 
+
+<h2> Metasyntactic variables used per month </h2>
+<div id="histogram4"></div>
+<script>
+    var Year = [
+        [[2.8,'foo'],[2,'bar'],[3,'bash']],
+        [[4,'bar'],[2,'bar'],[3,'bash']],
+        [[2,'bash'],[2,'bar'],[3,'bash']],
+        [[2,'bash'],[2,'bash'],[3,'bash']],
+        [[2,'foo'],[2,'foo'],[3,'foo']],
+        [[2,'bash'],[2,'foo'],[3,'foo']],
+        [[2,'foo'],[2,'bash'],[3,'foo']],
+        [[3,'bar'],[2,'foo'],[3,'bash']],
+        [[2,'foo'],[5,'bar extra-secret-class'],[3,'foo']],
+        [[2,'foo'],[2,'foo'],[3,'foo']],
+        [[4,'foo'],[3,'foo'],[3,'bar']],
+        [[1,'bar'],[2,'foo'],[3.9,'foo']],
+    ];
+
+    HappyHistogram('histogram4', Year, 'darkcyan');
+</script>
+
+<div class="keys">
+    <div><div class="key bash"></div> Bash</div>
+    <div><div class="key foo"></div> Foo</div>
+    <div><div class="key bar"></div> Bar</div>
+    <div><div class="key extra-secret-class"></div> Highest Value (Bar)</div>
+</div>
+
+<p class="clear">3 values of both floats and ints per month, hover effect on just data bar (bottom) and different color.</p>
+
 <style>
     #histogram3 .yearHistogram .filledBottom:hover {
         background-color: #ddd;
+    }
+    #histogram4 .yearHistogram .bash, .keys .bash {
+        background-color: blue;
+    }
+    #histogram4 .yearHistogram .foo, .keys .foo {
+        background-color: yellow;
+    }
+    #histogram4 .yearHistogram .extra-secret-class, .keys .extra-secret-class {
+        background-color: red;
+    }
+    .keys .bar {
+        background-color: darkcyan;
+    }
+    .keys .key {
+        width: 10px;
+        height: 10px;
+    }
+    .keys div {
+        float: left;
+        margin-right: 10px;
+    }
+    .keys {
+        margin: 10px;
+        padding: 10px;
+    }
+    .clear {
+        clear: both;
     }
 </style>
 
