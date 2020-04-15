@@ -30,7 +30,15 @@ function HappyHistogram (targetId, monthData, color ) {
     for (i = 0; i < monthData.length; i++) {
         for (i2 = 0; i2 < monthData[i].length; i2++) {
             if (Array.isArray(monthData[i][i2])){
-                val = monthData[i][i2][0];
+                if(Array.isArray(monthData[i][i2][0])){
+                    tmpVal = 0;
+                    for (i3 = 0; i3 < monthData[i][i2].length; i3++) {
+                        tmpVal = monthData[i][i2][i3][0] + tmpVal;
+                    }
+                    val = tmpVal;
+                } else {
+                    val = monthData[i][i2][0];
+                }
             } else {
                 val = monthData[i][i2];
             }
@@ -53,18 +61,36 @@ function HappyHistogram (targetId, monthData, color ) {
 
         for (i2 = 0; i2 < monthData[i].length; i2++) {
             // init extra class to be empty at the start of each value
-            extraClass = '';
-
+            daysArray = [];
             // calculate day height percentages
             if (Array.isArray(monthData[i][i2])){
                 if (monthData[i][i2][0] !== undefined) {
-                    day = monthData[i][i2][0];
-                    if(monthData[i][i2][1] !== undefined) {
-                        extraClass = monthData[i][i2][1];
+                    if(Array.isArray(monthData[i][i2][0])) {
+                        tmpVal = 0;
+                        for (i3 = 0; i3 < monthData[i][i2].length; i3++) {
+                            tmpVal = monthData[i][i2][i3][0] + tmpVal;
+                            itemVal = monthData[i][i2][i3][0];
+                            if(monthData[i][i2][i3][1] !== undefined) {
+                                extraClass = monthData[i][i2][i3][1];
+                            } else {
+                                extraClass = '';
+                            }
+                            daysArray.push([itemVal, extraClass]);
+                        }
+                        day = tmpVal;
+                    } else {
+                        day = monthData[i][i2][0];
+                        if(monthData[i][i2][1] !== undefined) {
+                            extraClass = monthData[i][i2][1];
+                        } else {
+                            extraClass = '';
+                        }
+                        daysArray.push([day, extraClass]);
                     }
                 }
             } else {
                 day = monthData[i][i2];
+                daysArray.push([day, '']);
             }
             if (day < 0){
                 day = 0;
@@ -77,14 +103,22 @@ function HappyHistogram (targetId, monthData, color ) {
                 bottom = 0;
                 top = 100;
             }
-            finalHTML +=
-                '<div class="bar" style="width: ' + width + '%">' +
-                    '<div class="emptyTop" style="height: ' + top + '%">&nbsp;</div>' +
-                    '<div class="filledBottom ' + extraClass + '" style="height: ' + bottom + '%">&nbsp;</div>' +
-                '</div>';
+            finalHTML += '<div class="bar" style="width: ' + width + '%">' +
+                    '<div class="emptyTop" style="height: ' + top + '%">&nbsp;</div>';
+            if (daysArray.length === 1){
+                finalHTML += '<div class="filledBottom ' + daysArray[0][1] + '" style="height: ' + bottom  + '%">&nbsp;</div>';
+            } else {
+                for (i4 = 0; i4 < daysArray.length; i4++) {
+                    // todo - this isn't calculating the bottom values correctly - need to fix!
+                    console.log(JSON.stringify(daysArray[i4]));
+                    finalHTML += '<div class="filledBottom ' + daysArray[i4][1] + '" style="height: ' + (daysArray[i4][0] - bottom) + '%">&nbsp;</div>';
+                }
+            }
+            console.log('day end');
+            finalHTML += '</div>';
         }
 
-      finalHTML +=
+        finalHTML +=
             '</div>' + // close chart
             '<div class="name">' + monthNames[i] + '</div>' + // add month label
             '</div>'; // close month

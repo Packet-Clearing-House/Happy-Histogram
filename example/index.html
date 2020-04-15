@@ -28,7 +28,7 @@
         [1,1,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ];
 
-    HappyHistogram('histogram2', Year, 'aqua');
+    // HappyHistogram('histogram2', Year, 'aqua');
 </script>
 
 <p>Different color.</p>
@@ -52,7 +52,7 @@
         [1,1,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ];
 
-    HappyHistogram('histogram', Year, 'red');
+    // HappyHistogram('histogram', Year, 'red');
 </script>
 
 <p>Hover effect on entire bar and different color.</p>
@@ -94,7 +94,11 @@
 <div id="histogram4"></div>
 <script>
     var Year = [
-        [[2.8,'foo'],[2,'bar'],[3,'bash']],
+        [
+            [[2.8,'foo'],[4,'bar'],[5,'bash']],
+            [[4.1,'foo'],[3,'bar'],[3,'bash']],
+            [[1.2,'foo'],[1,'bar'],[8,'bash']]
+        ],
         [[4,'bar'],[2,'bar'],[3,'bash']],
         [[2,'bash'],[2,'bar'],[3,'bash']],
         [[2,'bash'],[2,'bash'],[3,'bash']],
