@@ -65,9 +65,9 @@ So, I decided to roll my own!
    ints or floats and will not pad for missing or ``NULL`` days.
 1. Call HH specifying target, data and CSS color: ``HappyHistogram('histogram', Year);`` . Your target must be an ID, not a class. 
 
-### Per Value Class
+### Per Day Class
 
-If you want to be able to have different colors for different values, you can uses classes.  
+If you want to be able to have different colors for different days, you can uses CSS classes.  
 Instead of passing in a value, you pass in an array.  The zeroth element is the value
 and the first element is the class name.  To get multiple class names, pass in the first element
 as a string with spaces between each class:
@@ -91,7 +91,61 @@ var Year = [
 
 Note that HH does some limited validation to ensure that array elements are correctly populated.
 
-### Advanced
+See "Metasyntactic variables used per month" on 
+[example page](https://packet-clearing-house.github.io/Happy-Histogram/example/).
+
+### Per Value Per Day Class
+
+Like the example above with a class per day, but instead each value within a day can have it's
+own class.  More arrays, but this time arrays within arrays within arrays WITHIN ARRAYS!!! ;) We're 
+ using some days that have no values `0,` some days that have two values
+`[[1,'telepresense'],[10,'cancelled']],` and some days that have 3 values 
+`[[1,'face2face'],[4,'telepresense'],[5,'cancelled']],`. 
+
+```
+    var Year = [
+        [
+            [[1,'telepresense'],[10,'cancelled']],
+            0,
+            0,
+            [[4,'telepresense'],[9,'cancelled']],
+            [[5,'telepresense'],[8,'cancelled']],
+            [[4,'telepresense'],[7,'cancelled']],
+            [[2,'telepresense'],[5,'cancelled']],
+            0,
+            [[1,'telepresense'],[2,'cancelled']],
+            0,
+            [[6,'telepresense'],[1,'cancelled']],
+            [[8,'telepresense'],[4,'cancelled']],
+            0,
+            [[2,'telepresense'],[2,'cancelled']],
+            [[8,'telepresense'],[1,'cancelled']],
+            [[1,'face2face'],[4,'telepresense'],[5,'cancelled']],
+            [[1,'telepresense'],[8,'cancelled']],
+            [[5,'telepresense'],[1,'cancelled']],
+            0,
+            [[2,'telepresense'],[4,'cancelled']],
+            [[7,'telepresense'],[5,'cancelled']],
+            0,
+            [[5,'telepresense'],[2,'cancelled']],
+            0,
+            0,
+            [[1,'telepresense'],[1,'cancelled']],
+            0,
+            [[1,'face2face'],[4,'telepresense'],[5,'cancelled']],
+            [[7,'telepresense'],[2,'cancelled']],
+            0,
+            [[2,'telepresense'],[1,'cancelled']],
+        ],
+        # 11 MORE ARRAYS OF EACH MONTH HERE
+```
+
+See "Meetings affected by COVID19 2020" on 
+[example page](https://packet-clearing-house.github.io/Happy-Histogram/example/).  As well,
+see the PCH [Internet Meetings page](https://www.pch.net/meetings),
+ which this Per Value Per Day class feature was written for in HH 1.3.
+
+### Syntax
 
 **Bar Color** - Pass in the CSS value when you
 call HH: ``HappyHistogram('histogram', Year, 'red');`` or ``HappyHistogram('histogram', Year, '#ddd');``. Default color is ``#043864``
@@ -115,8 +169,8 @@ MIT
 
 ## Version History
 
-
-- 1.2 - 04/09/2020: Enable values to be arrays so classes can passed for each value 
+- 1.3 - 04/15/2020: Enable values to be arrays of arrays so classes can passed for each value within a day 
+- 1.2 - 04/09/2020: Enable values to be arrays so classes can passed for each day 
 - 1.1 - 11/16/2016: Fix gap on Safari, add more examples
 - 1.0 - 10/24/2016: Initial release
 
