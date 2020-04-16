@@ -5,7 +5,7 @@
 Happy Histogram (HH) is a simple JavaScript library for generating a
 client side histogram showing activity across 
 a year.  This JavaScript
-library uses no 3rd party libraries (eg D3 or jQuery) and is barely over 1000 _bytes_ in size. 
+library uses no 3rd party libraries (eg D3 or jQuery) and is barely over 1700 _bytes_ in size. 
 The DOM elements used are only
 HTML (floating DIVs) and not any fancy Canvas or SVG. The final histogram is very 
 fast to render and is 100% responsive, looking good on both mobile
@@ -35,7 +35,8 @@ So, I decided to roll my own!
 
 ### Basics
 
-1. Download [the latest HH](https://github.com/Packet-Clearing-House/Happy-Histogram/releases/latest) and grab the minified CSS and JS from the "dist" directory.
+1. Download [the latest HH](https://github.com/Packet-Clearing-House/Happy-Histogram/releases/latest) and
+ grab the minified CSS and JS from the `dist` directory.
 2. Include HH's JavaScript and CSS: 
    ```
    <script src="HappyHistogram.min.js" ></script>
@@ -70,7 +71,7 @@ So, I decided to roll my own!
 If you want to be able to have different colors for different days, you can uses CSS classes.  
 Instead of passing in a value, you pass in an array.  The zeroth element is the value
 and the first element is the class name.  To get multiple class names, pass in the first element
-as a string with spaces between each class:
+as a string with spaces between each class (see `extra-secret-class` below):
 
 ```
 var Year = [
@@ -91,7 +92,7 @@ var Year = [
 
 Note that HH does some limited validation to ensure that array elements are correctly populated.
 
-See "Metasyntactic variables used per month" on 
+For an example of this, see "Metasyntactic variables used per month" on 
 [example page](https://packet-clearing-house.github.io/Happy-Histogram/example/).
 
 ### Per Value Per Day Class
@@ -140,7 +141,7 @@ own class.  More arrays, but this time arrays within arrays within arrays WITHIN
         # 11 MORE ARRAYS OF EACH MONTH HERE
 ```
 
-See "Meetings affected by COVID19 2020" on 
+For an example of this, see "Meetings affected by COVID19 2020" on 
 [example page](https://packet-clearing-house.github.io/Happy-Histogram/example/).  As well,
 see the PCH [Internet Meetings page](https://www.pch.net/meetings),
  which this Per Value Per Day class feature was written for in HH 1.3.
