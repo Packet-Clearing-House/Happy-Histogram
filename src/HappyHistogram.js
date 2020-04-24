@@ -1,6 +1,6 @@
 /**
  * Generate an entirely HTML based histogram for events across a year
- * Version 1.3
+ * Version 1.4
  * @param targetId - ID in DOM to render into
  * @param monthData array of arrays - with int per day
  * @param color string - CSS color
@@ -127,10 +127,10 @@ function HappyHistogram (targetId, monthData, color ) {
                     // keep track of rolling percentTotal vs bottom.  If they differ on the last value in daysArray,
                     // round it up (some times WAY up) to cover the gap.  This prevents missing pixel(s) at the
                     // bottom of the histogram
-                    percent = (daysArray[i4][0]/max)* 100;
+                    percent = Math.ceil((daysArray[i4][0]/max)* 100);
                     percentTotal += percent;
                     if(daysArray.length - 1  === i4 && percentTotal !== bottom){
-                        percent = bottom - percentTotal + percent;
+                        percent = Math.ceil(bottom - percentTotal + percent);
                     }
                     finalHTML += '<div class="filledBottom ' + daysArray[i4][1] + '" style="height: ' + percent + '%">&nbsp;</div>';
 
