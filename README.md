@@ -170,6 +170,7 @@ MIT
 
 ## Version History
 
+- 1.4 - 04/24/2020: Fix gap at bottom of some histograms #5 
 - 1.3 - 04/15/2020: Enable values to be arrays of arrays so classes can passed for each value within a day 
 - 1.2 - 04/09/2020: Enable values to be arrays so classes can passed for each day 
 - 1.1 - 11/16/2016: Fix gap on Safari, add more examples
