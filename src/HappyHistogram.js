@@ -1,6 +1,6 @@
 /**
  * Generate an entirely HTML based histogram for events across a year
- * Version 1.4
+ * Version 1.5
  * @param targetId - ID in DOM to render into
  * @param monthData array of arrays - with int per day
  * @param color string - CSS color

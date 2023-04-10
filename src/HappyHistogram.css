@@ -1,7 +1,5 @@
 
 /* histogram */
-.yearHistogram {
-}
 .yearHistogram .month{
     width: 8.33%;
     float:left;
@@ -40,6 +38,8 @@
 }
 .yearHistogram .bar {
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 .yearHistogram .yAxisLabel {
     height: 100%;
